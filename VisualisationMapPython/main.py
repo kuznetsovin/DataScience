@@ -6,10 +6,10 @@ Created on Tue Oct 22 11:43:08 2013
 """
 import vincent
 
-world_topo = r'TestWorldMap/world-countries.topo.json'
-geo_data = [{'name': 'countries',
-             'url': world_topo,
-             'feature': 'world-countries'}]
+rus = 'RusMap/russia_1e-7sr.json'
+geo_data = [{'name': 'states',
+             'url': rus,
+             'feature': 'russia'}]
 
-vis = vincent.Map(geo_data=geo_data, scale=200)
+vis = vincent.Map(geo_data=geo_data)
 vis.to_json('map.json', html_out=True, html_path='map.html')

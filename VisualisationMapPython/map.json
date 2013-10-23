@@ -3,14 +3,13 @@
   "data": [
     {
       "format": {
-        "feature": "world-countries",
+        "feature": "russia",
         "type": "topojson"
       },
-      "name": "countries",
+      "name": "states",
       "transform": [
         {
           "projection": "winkel3",
-          "scale": 200,
           "translate": [
             480,
             250
@@ -19,7 +18,7 @@
           "value": "data"
         }
       ],
-      "url": "TestWorldMap/world-countries.topo.json"
+      "url": "RusMap/russia_1e-7sr.json"
     }
   ],
   "height": 500,
@@ -27,7 +26,7 @@
   "marks": [
     {
       "from": {
-        "data": "countries"
+        "data": "states"
       },
       "properties": {
         "enter": {
