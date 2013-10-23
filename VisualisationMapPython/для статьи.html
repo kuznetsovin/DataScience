@@ -1,0 +1,18 @@
+Для работы pandas с html необходимо установить модуль html5lib
+В файле "C:\Python27\lib\site-packages\vincent\transforms.py" необходимо изменить код:
+<code>
+    @grammar(int)
+    def rotate(value):
+        """The rotation of the projection"""
+
+        if value < 0:
+            raise ValueError('The rotation cannot be negative.')
+</code>
+на :
+<code>
+    @grammar(list)
+    def rotate(value):
+		if len(value) != 2:
+			raise ValueError('len(center) must = 2')
+</code>			
+Данная манипуляция нужна для того, чтобы мы смогли бы передать в параметр rotate список с величинымаи поворотов [-105,0] для корретного отображения карты нашей страны. Изначально автор дал возможность передавать лишь одно положительное значение, с которым корретного огтображения мне добиться не удалось.

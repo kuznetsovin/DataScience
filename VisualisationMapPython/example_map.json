@@ -9,7 +9,16 @@
       "name": "states",
       "transform": [
         {
-          "projection": "winkel3",
+          "center": [
+            -10,
+            65
+          ],
+          "projection": "conicEqualArea",
+          "rotate": [
+            -105,
+            0
+          ],
+          "scale": 700,
           "translate": [
             480,
             250
