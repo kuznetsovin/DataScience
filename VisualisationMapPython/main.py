@@ -12,7 +12,6 @@ import vincent
 stat = pd.read_html('Data/AVGPeopleProfit.htm', header=0, index_col=0)[0]
 fo = [u'Приволжский федеральный округ',u'Центральный федеральный округ']
 fostat = stat[stat.index.isin(fo)].transpose()
-fostat = fostat[fostat.index >= 2000]
 fostat.set_index(pd.date_range('1999','2011', freq='AS'), inplace=True)
 fostat.rename(columns={u'Приволжский федеральный округ':'PFO', u'Центральный федеральный округ':'CFO'}, inplace=True)
 #граффик
