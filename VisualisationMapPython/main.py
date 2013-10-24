@@ -6,9 +6,21 @@ Created on Tue Oct 22 11:43:08 2013
 """
 
 import pandas as pd
+import vincent
 
 #загружаем статистику регионов и справочник с кодами регионов используемыми в карте
 stat = pd.read_html('Data/AVGPeopleProfit.htm', header=0, index_col=0)[0]
+fo = [u'Приволжский федеральный округ',u'Центральный федеральный округ']
+fostat = stat[stat.index.isin(fo)].transpose()
+fostat = fostat[fostat.index >= 2000]
+fostat.set_index(pd.date_range('1999','2011', freq='AS'), inplace=True)
+fostat.rename(columns={u'Приволжский федеральный округ':'PFO', u'Центральный федеральный округ':'CFO'}, inplace=True)
+#граффик
+line = vincent.Line(fostat)
+line.axis_titles(x='Date', y='money')
+line.legend(title='CFO vs PFO')
+line.display()
+#картограмма
 spr = pd.read_csv('Data/russia-region-names.tsv','\t', index_col=0, header=None, names = ['name','code'], encoding='utf-8')
 #приводим имена ригеонов в стат данных к справочному виду и обновляем индекс
 new_index = stat.index.to_series().str.replace(u'(2\))|(1\))|(г. )','')
@@ -17,8 +29,6 @@ stat.set_index(new_index, inplace=True)
 RegionProfit = stat.join(spr, how='inner')
 #удяляем лишние неинформаивные столбцы
 RegionProfit.drop([1990], axis=1)
-
-import vincent
 #подключаем карту d3
 geo_data = [{'name': 'rus',
              'url': 'RusMap/russia.json',
