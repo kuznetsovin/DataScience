@@ -13,7 +13,6 @@ stat = pd.read_html('Data/AVGPeopleProfit.htm', header=0, index_col=0)[0]
 fo = [u'Приволжский федеральный округ',u'Центральный федеральный округ']
 fostat = stat[stat.index.isin(fo)].transpose()
 fostat.set_index(pd.date_range('1999','2011', freq='AS'), inplace=True)
-fostat.rename(columns={u'Приволжский федеральный округ':'PFO', u'Центральный федеральный округ':'CFO'}, inplace=True)
 #граффик
 line = vincent.Line(fostat)
 line.axis_titles(x='Date', y='money')
@@ -40,7 +39,7 @@ vis = vincent.Map(data=RegionProfit, geo_data=geo_data,scale=700, projection='co
 vis.marks[0].properties.enter.stroke_opacity = vincent.ValueRef(value=0.5)
 #задаем градацию по цвету для группы для отображения на карте
 vis.scales['color'].type = 'threshold'
-vis.scales['color'].domain = [0, 10000, 15000, 20000, 25000, 30000]
+vis.scales['color'].domain = [10000, 15000, 20000, 25000, 30000]
 #вводим название легенды карты
 vis.legend(title=u'Доходы руб.')
 #выгружаем итоговую карту
