@@ -1,4 +1,0 @@
-http://www.gks.ru/bgd/regl/b12_14p/IssWWW.exe/Stg/d01/05-02.htm - СРЕДНЕДУШЕВЫЕ ДЕНЕЖНЫЕ ДОХОДЫ НАСЕЛЕНИЯ
-
-https://github.com/trifacta/vega/wiki/Marks - описание объектов marks
-https://github.com/trifacta/vega/wiki/Scales - описание свойст Scales
