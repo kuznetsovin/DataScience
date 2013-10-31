@@ -25,7 +25,7 @@ target = LabelCode.transform(target)
 
 kfold = 20
 
-model = svm.SVC()
+model = svm.SVC(C=0.2, kernel='linear')
 itog = DataFrame(index=xrange(kfold))
 scores = cross_validation.cross_val_score(model, train, target, cv = kfold)
 itog.insert(len(itog.columns),'SVM_Liner',scores)
