@@ -90,6 +90,8 @@ pl.show()
 #a = DataFrame(SumInfo['mean'])
 #for i in a.index.to_series().str.split(' ', n=0).tolist():
 #    d.append(str(i[0]))
-
-
-
+#for i in set(d):
+#    a.insert(len(a.columns), i, 0.0)
+#    a[i][a.index.to_series().str.contains(i)] = a['mean']
+#a.drop('mean',axis=1).plot(kind='bar', stacked=True, align='center', figsize=(8,4))
+#plt.legend(loc=4, fontsize='small',bbox_to_anchor = (1.3, 0.5))
