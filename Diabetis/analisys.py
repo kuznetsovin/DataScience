@@ -11,27 +11,24 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import BernoulliNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_curve, auc
-from pandas.tools.plotting import scatter_matrix
 import pylab as pl
-from sklearn import linear_model
-
+import math
 
 data = read_csv('train.csv', header=None)
+
+data.hist(figsize=(12,10))
+data[(data[2] > -3*math.sqrt(data[2].var())) & (data[6] > -3*math.sqrt(data[6].var()))]
+
 
 target = data[0]
 train = data.drop(0, axis=1)
 
-scatter_matrix(data, alpha=0.2)
+
 
 kfold = 10
 itog = DataFrame(index=xrange(kfold))
 
 #Строим модели
-model = linear_model.LinearRegression()
-scores = cross_validation.cross_val_score(model, train, target, cv = kfold)
-itog.insert(len(itog.columns),'LinearRegression',scores)
-
-
 model = svm.SVC(kernel='linear')
 scores = cross_validation.cross_val_score(model, train, target, cv = kfold)
 itog.insert(len(itog.columns),'SVM Liner',scores)
@@ -88,6 +85,11 @@ pl.xlabel('False Positive Rate')
 pl.ylabel('True Positive Rate')
 pl.legend(loc="lower right")
 pl.show()
+
+#d =[]
+#a = DataFrame(SumInfo['mean'])
+#for i in a.index.to_series().str.split(' ', n=0).tolist():
+#    d.append(str(i[0]))
 
 
 
