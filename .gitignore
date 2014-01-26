@@ -33,3 +33,13 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+figure/unnamed-chunk-3.png
+
+.ipynb_checkpoints/predict_o-checkpoint.ipynb
+
+text.Rmd
+
+text.html
+
+*.md
