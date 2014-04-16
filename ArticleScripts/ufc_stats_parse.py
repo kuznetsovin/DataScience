@@ -14,8 +14,6 @@ sum_event_link = events_tabl.set_index('EVENT').join(event_date.set_index('EVENT
 
 sum_event_link.to_csv('..\DataSets\ufc\list_ufc_events.csv',';',index=False)
 
-sum_event_link = read_csv('..\DataSets\ufc\list_ufc_events.csv',';')
-
 all_fights = []
 for event in sum_event_link.itertuples():
     print event[0], event[1], event[2]
@@ -26,16 +24,24 @@ for event in sum_event_link.itertuples():
         if not figther_num % 2:
             all_fights.append(
                     {'FIGHTER_WIN': figth_event_tbl[figther_num][2].text_content().lstrip().rstrip(), 
-                    'FIGHTER_LOSE': figth_event_tbl[figther_num+1][1].text_content().lstrip().rstrip(), 
+                    'STR_WIN': figth_event_tbl[figther_num][3].text_content().lstrip().rstrip(), 
+                    'TD_WIN': figth_event_tbl[figther_num][4].text_content().lstrip().rstrip(), 
+                    'SUB_WIN': figth_event_tbl[figther_num][5].text_content().lstrip().rstrip(), 
+                    'PASS_WIN': figth_event_tbl[figther_num][6].text_content().lstrip().rstrip(), 
+                    'FIGHTER_LOSE': figth_event_tbl[figther_num+1][1].text_content().lstrip().rstrip(),
+                    'STR_LOSE': figth_event_tbl[figther_num+1][2].text_content().lstrip().rstrip(), 
+                    'TD_LOSE': figth_event_tbl[figther_num+1][3].text_content().lstrip().rstrip(), 
+                    'SUB_LOSE': figth_event_tbl[figther_num+1][4].text_content().lstrip().rstrip(), 
+                    'PASS_LOSE': figth_event_tbl[figther_num+1][5].text_content().lstrip().rstrip(),  
                     'METHOD': figth_event_tbl[figther_num][8].text_content().lstrip().rstrip(), 
                     'METHOD_DESC': figth_event_tbl[figther_num+1][7].text_content().lstrip().rstrip(), 
                     'ROUND': figth_event_tbl[figther_num][9].text_content().lstrip().rstrip(), 
                     'TIME': figth_event_tbl[figther_num][10].text_content().lstrip().rstrip(),
                     'EVENT_NAME':event[1]} 
                     )
+      
 history_stat = DataFrame(all_fights)
 history_stat.to_csv('..\DataSets\ufc\list_all_fights.csv',';',index=False)
 
 all_statistics = history_stat.set_index('EVENT_NAME').join(sum_event_link.set_index('EVENT').DATE)
 all_statistics.to_csv('..\DataSets\ufc\statistics_ufc.csv',';', index_label='EVENT')
-

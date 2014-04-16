@@ -43,3 +43,4 @@ text.Rmd
 text.html
 
 *.md
+Ipython/.ipynb_checkpoints
