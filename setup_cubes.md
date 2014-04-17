@@ -74,3 +74,13 @@
 	python manage.py runserver
 
 Подробнее в [документации](https://github.com/nonsleepr/cubesviewer/blob/master/doc/guide/cubesviewer-gui-installation.md)
+
+### Установка Apache
+
+	sudo apt-get install apache2 libapache2-mod-uwsgi
+	sudo apt-get install uwsgi uwsgi-plugin-python uwsgi-plugin-cgi
+	
+### Установка  MySQL
+	
+	sudo apt-get install python-mysqldb
+	sudo apt-get install mysql-server mysql-client libmysqlclient12-dev
