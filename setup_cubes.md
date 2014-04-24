@@ -61,6 +61,8 @@
 
 Копируем содержимое папки */src* в нужный каталог
 
+Внести в ```slicer.ini``` в раздел ```[server]``` строку ```allow_cors_origin: http://localhost:8000```
+
 Конфигурируем Django оболочку в *web/cvapp/settings.py*
 
 Внести изменения от [коммита](https://bitbucket.org/spookylukey/django-piston/commits/40645e760ea2cb9a37d87c9352607b3fa7fac346#chg-piston/emitters.py) в dajno-piston
@@ -74,3 +76,13 @@
 	python manage.py runserver
 
 Подробнее в [документации](https://github.com/nonsleepr/cubesviewer/blob/master/doc/guide/cubesviewer-gui-installation.md)
+
+### Установка Apache
+
+	sudo apt-get install apache2 libapache2-mod-uwsgi
+	sudo apt-get install uwsgi uwsgi-plugin-python uwsgi-plugin-cgi
+	
+### Установка  MySQL
+	
+	sudo apt-get install python-mysqldb
+	sudo apt-get install mysql-server mysql-client libmysqlclient12-dev
