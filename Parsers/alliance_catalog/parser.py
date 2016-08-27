@@ -57,11 +57,7 @@ if __name__ == "__main__":
     result = csv.DictWriter(f, delimiter=";", fieldnames=['name', 'address', 'phone', 'email'])
     result.writeheader()
 
-    companes = reduce(
-        lambda result, page: page + result,
-        map(lambda x: get_company_links(x, result), range(1, 51)),
-        []
-    )
+    map(lambda x: get_company_links(x, result), range(1, 51))
 
     print "Saving data file..."
     f.close()
